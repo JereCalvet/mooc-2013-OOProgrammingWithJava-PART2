@@ -15,6 +15,10 @@ public class Thing {
         return this.name;
     }
     
+    public void setWeight(int weight){
+        this.weight = weight;
+    }
+
     public int getWeight(){
         return this.weight;
     }

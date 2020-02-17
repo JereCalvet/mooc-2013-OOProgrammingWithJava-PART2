@@ -30,12 +30,26 @@ public class Suitcase {
     }
 
     public void addThing(Thing thingToAdd) {
-        if (this.maxWeightLimit > (thingToAdd.getWeight() + totalWeight())) {
+        if (this.maxWeightLimit >= (thingToAdd.getWeight() + totalWeight())) {
             this.listOfThings.add(thingToAdd);
         }
     }
 
     public Thing heaviestThing() {
+        /* respuesta propuesta: el mio verifica que no este vacio. este no
+        declara en objeto null y en el if entra y guarda la "thing" de turno en el objeto.
+        
+        similar a mi codigo, muy bueno
+        Thing heaviest = null;
+ 
+        for (Thing thing : this.things) {
+            if (heaviest == null || heaviest.getWeight() < thing.getWeight()) {
+                heaviest = thing;
+            }
+        }
+
+        return heaviest;
+        */
         if (!this.listOfThings.isEmpty()) {
             Thing something = new Thing(null, 0);
             for (Thing thing : this.listOfThings) {
@@ -44,23 +58,18 @@ public class Suitcase {
                 }
             }
             return something;
-            /*
-            aca tengo duda si esta bien. funcionar, funciona
-            la duda es que something hace referencia al ultimo objeto mas pesado.
-            si se modifica la refencia(el resultado del metodo), se modifica el objeto base.
-            */
         }
         return null;
     }
 
     @Override
     public String toString() {
-        if (listOfThings.isEmpty()) {
+        if (this.listOfThings.isEmpty()) {
             return "empty (" + totalWeight() + " kg)";
-        } else if (listOfThings.size() == 1) {
-            return listOfThings.size() + " thing (" + totalWeight() + " kg)";
+        } else if (this.listOfThings.size() == 1) {
+            return this.listOfThings.size() + " thing (" + totalWeight() + " kg)";
         } else {
-            return listOfThings.size() + " things (" + totalWeight() + " kg)";
+            return this.listOfThings.size() + " things (" + totalWeight() + " kg)";
         }
     }
 }

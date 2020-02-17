@@ -1,19 +1,27 @@
 
 public class Main {
 
+    public static void addSuitcasesFullOfBricks(Container pContainer) {
+        int i = 1;
+        while (i < 101) {
+            Suitcase suitcase = new Suitcase(100);
+            suitcase.addThing(new Thing("brick", i));
+            pContainer.addSuitcase(suitcase);
+            i++;
+        }
+    }
+
     public static void main(String[] args) {
         // use this main class to test your program!
-        Thing book = new Thing("Happiness in Three Steps", 2);
-        Thing mobile = new Thing("Nokia 3210", 1);
-        Thing brick = new Thing("Brick", 4);
-
-        Suitcase suitcase = new Suitcase(10);
-        suitcase.addThing(book);
-        suitcase.addThing(mobile);
-        suitcase.addThing(brick);
-
-        Thing heaviest = suitcase.heaviestThing();
-        System.out.println("The heaviest thing: " + heaviest);
+        Thing thing = new Thing("brick", 1);
+        Thing thing2 = new Thing("brick2", 2);
+        Thing thing3 = new Thing("brick3", 3);
+        
+        Suitcase suitcase = new Suitcase(100);
+        suitcase.addThing(thing3);
+        suitcase.addThing(thing2);
+        suitcase.addThing(thing);
+        System.out.println(suitcase.heaviestThing());
     }
 
 }
