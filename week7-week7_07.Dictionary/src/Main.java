@@ -23,7 +23,6 @@ public class Main {
         
         Scanner reader = new Scanner(System.in);
         TextUserInterface ui = new TextUserInterface(reader, dictionary);
-        
         ui.start();
         
     }
