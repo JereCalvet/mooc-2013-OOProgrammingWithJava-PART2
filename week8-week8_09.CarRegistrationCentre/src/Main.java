@@ -26,13 +26,45 @@ public class Main {
         System.out.println("Finnish: " + finnish);
         // if the equals method hasn't been overwritten, the same registration plate is repeated in the list
 
-        Map<RegistrationPlate, String> owners = new HashMap<RegistrationPlate, String>();
-        owners.put(reg1, "Arto");
-        owners.put(reg3, "Jürgen");
-
+        /* testing
+        VehicleRegister owners = new VehicleRegister();
+        
         System.out.println("owners:");
+        
+        if (owners.add(new RegistrationPlate("FI", "ABC-123"), "Jere")){
+            System.out.println("se agrego");
+        } else {
+            System.out.println("wtf nada");
+        }
+        if (owners.add(new RegistrationPlate("FI", "ABC-124"), "Jere2")){
+            System.out.println("se agrego");
+        } else {
+            System.out.println("wtf nada");
+        }
+        if (owners.add(new RegistrationPlate("FI", "ABC-125"), "Jere3")){
+            System.out.println("se agrego");
+        } else {
+            System.out.println("wtf nada");
+        }
+        if (owners.add(new RegistrationPlate("FI", "ABC-126"), "Jere3")){
+            System.out.println("se agrego");
+        } else {
+            System.out.println("wtf nada");
+        }
+        
         System.out.println(owners.get(new RegistrationPlate("FI", "ABC-123")));
-        System.out.println(owners.get(new RegistrationPlate("D", "B WQ-431")));
+        if (owners.delete(new RegistrationPlate("FI", "ABC-123"))){
+            System.out.println("borro");
+        } else {
+            System.out.println("no borro");
+        }
+        System.out.println("comprobando si borro");
+        System.out.println(owners.get(new RegistrationPlate("FI", "ABC-123")));
+        System.out.println("-------------");
+        owners.printRegistrationPlates();
+        System.out.println("-------------");
+        owners.printOwners();
+        */
         // if the hashCode hasn't been overwritten, the owners are not found
     }
 }

@@ -16,6 +16,7 @@ public class Main {
         */
         Scanner sc = new Scanner(System.in);
         TextUserInterface ui = new TextUserInterface(sc);
-        ui.start();
+        //ui.start();
+        System.out.println(ui);
     }
 }
