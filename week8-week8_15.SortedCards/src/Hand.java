@@ -28,12 +28,17 @@ public class Hand implements Comparable<Hand> {
         }
     }
     
-    public int handValue(){
+    public int handValue(){ //resp pro: este metodo como privado
         int value = 0;
         for (Card card : this.hand){
             value += card.getValue();
         }
         return value;
+    }
+    
+    public void sortAgainstSuit(){
+        SortAgainstSuitAndValue sort = new SortAgainstSuitAndValue();
+        Collections.sort(this.hand, sort); //resp pro: Collections.sort(cards, new SortAgainstSuitAndValue());
     }
 
     @Override
