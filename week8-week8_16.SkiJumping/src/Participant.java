@@ -38,6 +38,14 @@ public class Participant implements Comparable<Participant> {
     public void addJump(Jump jump){
         this.jumpList.add(jump);
     }
+
+    public void printJumps(){
+        String saltos = "";
+        for (Jump jump : this.jumpList){
+            saltos += jump+", ";
+        }
+        System.out.println("jump lengths: "+saltos.substring(0, saltos.length()-2));
+    }
     
     @Override
     public String toString() {
