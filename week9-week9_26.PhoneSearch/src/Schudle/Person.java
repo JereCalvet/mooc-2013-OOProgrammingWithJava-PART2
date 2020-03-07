@@ -30,6 +30,11 @@ public class Person {
         return true;
     }
     
+    @Override
+    public String toString(){
+        return this.surname;
+    }
+    
     public Person(String surname) {
         this.surname = surname;
     }

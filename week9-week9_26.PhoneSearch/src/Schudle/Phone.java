@@ -26,8 +26,32 @@ public class Phone {
         }    
     }
 
-    public void printNumbers(String personName) { //for testing
-        Person temp = new Person(personName);
-        System.out.println(this.phoneNumbers.get(temp));
+    public ArrayList<String> searchNumber(String personName){
+        for (Person person : this.phoneNumbers.keySet()) {
+            if (person.getSurname().equals(personName)) {
+                return this.phoneNumbers.get(person);
+            }
+        }
+        return null;
+    }
+    
+    public Person searchPerson(String phoneNumber){
+        for (Person personList : this.phoneNumbers.keySet()) {
+            for (String number : this.phoneNumbers.get(personList)) {
+                if (number.equals(phoneNumber)) {
+                   return personList; 
+                }
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public String toString() {
+        String result = "";
+        for (Person person : this.phoneNumbers.keySet()) {
+            result += person + " " + this.phoneNumbers.get(person) + "\n";
+        }
+        return result;
     }
 }
