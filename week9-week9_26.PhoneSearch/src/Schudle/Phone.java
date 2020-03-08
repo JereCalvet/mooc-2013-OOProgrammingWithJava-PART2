@@ -16,13 +16,12 @@ public class Phone {
         this.phoneNumbers = new HashMap<Person, ArrayList<String>>();
     }
 
-    public void addNumber(String personName, String number) {
-        Person tempPerson = new Person(personName);
-        if (this.phoneNumbers.containsKey(tempPerson)) {
-            this.phoneNumbers.get(tempPerson).add(number);
+    public void addNumber(Person person, String number) {
+        if (this.phoneNumbers.containsKey(person)) {
+            this.phoneNumbers.get(person).add(number);
         } else {
-            this.phoneNumbers.put(tempPerson, new ArrayList<String>());
-            this.phoneNumbers.get(tempPerson).add(number);
+            this.phoneNumbers.put(person, new ArrayList<String>());
+            this.phoneNumbers.get(person).add(number);
         }    
     }
 

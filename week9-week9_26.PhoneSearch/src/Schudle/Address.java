@@ -41,9 +41,7 @@ public class Address {
 
     public void deletePersonalInfo(String personName) {
         Person tempPerson = new Person(personName);
-//        if (this.address.containsKey(tempPerson)) {
-            this.address.remove(tempPerson);
- //       }
+        this.address.remove(tempPerson);
     }
 
     @Override
