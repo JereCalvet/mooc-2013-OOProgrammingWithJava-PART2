@@ -44,27 +44,27 @@ public class TextUserInterface {
                 System.out.println();
                 break;
             case 2:   
-                System.out.println("case 2");
+                this.schudle.searchForNumber(askForString("whose number: "));
                 System.out.println();
                 break;
             case 3:   
-                System.out.println("case 3");
+                this.schudle.searchPersonByPhoneNumber(askForString("number: "));
                 System.out.println();
                 break;
             case 4:   
-                System.out.println("case 4");
+                this.schudle.addAddress(askForString("whose address: "), askForString("street: "), askForString("city: "));
                 System.out.println();
                 break;
             case 5:   
-                System.out.println("case 5");
+                this.schudle.searchPersonalInfo(askForString("whose information: "));
                 System.out.println();
                 break;
             case 6:   
-                System.out.println("case 6");
                 System.out.println();
+                //6 delete personal information
                 break;
             case 7:   
-                System.out.println("case 7");
+                // 7 filtered listing
                 System.out.println();
                 break;    
         }
@@ -72,6 +72,7 @@ public class TextUserInterface {
      
     private void userInput(Scanner reader) {
         while (true) {
+            System.out.print("command: ");
             String command = this.reader.nextLine();
             if (command.equals("x")) {
                 System.out.println();

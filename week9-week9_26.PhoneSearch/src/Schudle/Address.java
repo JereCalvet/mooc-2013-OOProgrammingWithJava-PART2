@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * TODO- evitar parametros de funciones nulos
+ * TODO- evitar parametros de funciones nulos todo- If a person is deleted, no
+ * search should retrieve them.
  *
  * @author Jere
  */
@@ -16,32 +17,33 @@ public class Address {
         this.address = new HashMap<Person, Map<String, String>>();
     }
 
+    private Person getPersonObjFromString(String name) {
+        return new Person(name);
+    }
+
+    public boolean personContainsAddress(String personName) {
+        return this.address.containsKey(this.getPersonObjFromString(personName));
+    }
+
     public void addAddress(String personName, String street, String city) {
-        Person tempPerson = new Person(personName);
-        if (this.address.containsKey(tempPerson)) {
-            this.address.get(tempPerson).put(street, city);
+        if (this.personContainsAddress(personName)) {
+            this.address.get(getPersonObjFromString(personName)).put(street, city);
         } else {
-            this.address.put(tempPerson, new HashMap<String, String>());
-            this.address.get(tempPerson).put(street, city);
+            this.address.put(getPersonObjFromString(personName), new HashMap<String, String>());
+            this.address.get(getPersonObjFromString(personName)).put(street, city);
         }
     }
 
-    public String searchPersonalInfo(String personName) {
-        Person tempPerson = new Person(personName);
-        Map<String, String> addressMap = null;
-        String result = "";
-        if (this.address.containsKey(tempPerson)) {
-            addressMap = this.address.get(tempPerson);
-            for (String street : addressMap.keySet()) {
-                result += street + " " + addressMap.get(street) + "\n";
-            }
+    public Map<String, String> searchAddress(String personName) { 
+        if (this.address.containsKey(getPersonObjFromString(personName))) {
+            Map<String, String> addressMap = this.address.get(getPersonObjFromString(personName));
+            return addressMap;
         }
-        return result;
+        return null;
     }
 
-    public void deletePersonalInfo(String personName) {
-        Person tempPerson = new Person(personName);
-        this.address.remove(tempPerson);
+    public void deleteAddress(String personName) {
+        this.address.remove(getPersonObjFromString(personName));
     }
 
     @Override

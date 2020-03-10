@@ -11,21 +11,29 @@ import java.util.Map;
 public class Phone {
 
     private Map<Person, ArrayList<String>> phoneNumbers;
-    
+
     public Phone() {
         this.phoneNumbers = new HashMap<Person, ArrayList<String>>();
     }
 
-    public void addNumber(Person person, String number) {
-        if (this.phoneNumbers.containsKey(person)) {
-            this.phoneNumbers.get(person).add(number);
-        } else {
-            this.phoneNumbers.put(person, new ArrayList<String>());
-            this.phoneNumbers.get(person).add(number);
-        }    
+    private Person getPersonObjFromString(String name) {
+        return new Person(name);
     }
 
-    public ArrayList<String> searchNumber(String personName){
+    public boolean personContainsPhoneNumber(String personName) {
+        return this.phoneNumbers.containsKey(this.getPersonObjFromString(personName));
+    }
+
+    public void addNumber(String name, String number) {
+        if (this.personContainsPhoneNumber(name)) {
+            this.phoneNumbers.get(this.getPersonObjFromString(name)).add(number);
+        } else {
+            this.phoneNumbers.put(this.getPersonObjFromString(name), new ArrayList<String>());
+            this.phoneNumbers.get(this.getPersonObjFromString(name)).add(number);
+        }
+    }
+
+    public ArrayList<String> searchNumberWithPersonName(String personName) {
         for (Person person : this.phoneNumbers.keySet()) {
             if (person.getSurname().equals(personName)) {
                 return this.phoneNumbers.get(person);
@@ -33,18 +41,18 @@ public class Phone {
         }
         return null;
     }
-    
-    public Person searchPerson(String phoneNumber){
+
+    public Person searchPersonWithPhoneNum(String phoneNumber) {
         for (Person personList : this.phoneNumbers.keySet()) {
             for (String number : this.phoneNumbers.get(personList)) {
                 if (number.equals(phoneNumber)) {
-                   return personList; 
+                    return personList;
                 }
             }
         }
         return null;
     }
-    
+
     @Override
     public String toString() {
         String result = "";
