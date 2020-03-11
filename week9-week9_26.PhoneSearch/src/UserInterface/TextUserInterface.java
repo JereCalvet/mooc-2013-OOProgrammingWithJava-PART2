@@ -1,4 +1,4 @@
-package TextUserInterface;
+package UserInterface;
 
 import Schudle.Schudle;
 import java.util.Scanner;
@@ -60,11 +60,11 @@ public class TextUserInterface {
                 System.out.println();
                 break;
             case 6:   
+                this.schudle.deletePerson(askForString("whose information: "));
                 System.out.println();
-                //6 delete personal information
                 break;
             case 7:   
-                // 7 filtered listing
+                this.schudle.filteredListing(askForString("keyword (if empty, all listed): "));
                 System.out.println();
                 break;    
         }

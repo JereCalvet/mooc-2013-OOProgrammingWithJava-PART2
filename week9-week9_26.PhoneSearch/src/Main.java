@@ -1,37 +1,18 @@
 
-import Schudle.*;
-import TextUserInterface.TextUserInterface;
-import java.util.*;
+import UserInterface.TextUserInterface;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Start your program here
-        // ATTENTION: In your program, you can create only one instance of class Scanner!
-//                Phone cel = new Phone();
-//                cel.addNumber(new Person("calvet"), "15457635");
-//                cel.addNumber(new Person("calvet"), "23254364");
-//                cel.addNumber(new Person("abuela"), "33453453");
-//                cel.addNumber(new Person("donatto"), "4345345");
-//                cel.addNumber(new Person("camila"), "52342342");
-//                cel.addNumber(new Person("calvet"), "62343244");
-//                
-//                Address dir = new Address();
-//                dir.addAddress("calvet", "finocchio 2079", "rio grande");
-//                dir.addAddress("donatto", "san martin", "ush");
-//                dir.addAddress("calvet", "finocchio 234", "rio grnade");
-//                System.out.println(dir.searchAddress("calvet"));
-//                System.out.println("");
-//                if (dir.searchAddress("laura").isEmpty()) {
-//                    System.out.println("esta vacio");
-//                }
-//
+//        String input = "1\n" + "pekka\n" + "040-123456\n" + "2\n" + "jukka\n" + "2\n" + "pekka\n" + "1\n"
+//                + "pekka\n" + "09-222333\n" + "2\n" + "pekka\n" + "3\n" + "02-444123\n" + "3\n" + "09-222333\n"
+//                + "5\n" + "pekka\n" + "4\n" + "pekka\n" + "ida ekmanintie\n" + "helsinki\n" + "5\n" + "pekka\n"
+//                + "4\n"+ "jukka\n"+ "korsontie\n"+ "vantaa\n"+ "5\n" + "jukka\n" + "7\n" + "kk\n" + "7\n" + "vantaa\n"
+//                + "7\n" + "seppo\n"+ "6\n" + "jukka\n"+ "5\n" + "jukka\n"+ "x\n";
+//        Scanner reader = new Scanner(input);
         Scanner reader = new Scanner(System.in);
         TextUserInterface ui = new TextUserInterface(reader);
         ui.start();
-//
-//     Schudle agenda = new Schudle();
-//     agenda.printTest("jere");
-    
     }
 }

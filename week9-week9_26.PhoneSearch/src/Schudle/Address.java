@@ -1,12 +1,13 @@
 package Schudle;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
- * TODO- evitar parametros de funciones nulos todo- If a person is deleted, no
- * search should retrieve them.
- *
  * @author Jere
  */
 public class Address {
@@ -34,12 +35,30 @@ public class Address {
         }
     }
 
-    public Map<String, String> searchAddress(String personName) { 
+    public Map<String, String> searchAddressWithPersonName(String personName) {
         if (this.address.containsKey(getPersonObjFromString(personName))) {
             Map<String, String> addressMap = this.address.get(getPersonObjFromString(personName));
             return addressMap;
         }
         return null;
+    }
+
+    public Set<Person> searchAddressContaining(String address) {
+        Set<Person> result = new HashSet<Person>();
+        for (Person person : this.address.keySet()) {
+            Map<String, String> mapAddress = this.address.get(person);
+            for (String street : mapAddress.keySet()) {
+                if (street.contains(address)) {
+                    result.add(person);
+                }
+            }
+            for (String city : mapAddress.values()) {
+                if (city.contains(address)) {
+                    result.add(person);
+                }
+            }
+        }
+        return result;
     }
 
     public void deleteAddress(String personName) {

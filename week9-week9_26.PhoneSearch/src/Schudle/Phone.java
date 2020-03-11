@@ -52,6 +52,10 @@ public class Phone {
         }
         return null;
     }
+    
+    public void deletePhone(String name){
+        this.phoneNumbers.remove(this.getPersonObjFromString(name));
+    }
 
     @Override
     public String toString() {

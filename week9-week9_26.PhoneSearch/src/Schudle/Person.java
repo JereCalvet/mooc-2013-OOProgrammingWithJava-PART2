@@ -4,9 +4,14 @@ package Schudle;
  *
  * @author Jere
  */
-public class Person {
+public class Person implements Comparable<Person>{
     private String surname;
 
+    @Override
+    public int compareTo(Person otherPerson) {
+        return this.surname.compareToIgnoreCase(otherPerson.getSurname());
+    }
+    
     @Override
     public int hashCode() {
         return this.surname.hashCode();
