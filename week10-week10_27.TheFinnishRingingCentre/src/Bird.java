@@ -4,7 +4,7 @@ public class Bird {
     private String name;
     private String latinName;
     private int ringingYear;
-
+    
     public Bird(String name, String latinName, int ringingYear) {
         if (latinName.isEmpty() || ringingYear == 0 ) {
             throw new IllegalArgumentException("Error in year or latin name");
@@ -26,13 +26,42 @@ public class Bird {
         return ringingYear;
     }
 
+    public void observe(Bird bird, String place){
+        
+    }
+    
     @Override
     public int hashCode() {
         return latinName.hashCode();
+        /*
+        resp propuesta: si no hay nombre el hash es el año
+          if (this.latinName == null) {
+            return this.ringingYear;
+        }
+ 
+        return this.latinName.hashCode() + this.ringingYear;
+        */
     }
     
     @Override
     public boolean equals(Object obj) {
+        /*
+        resp propuesta
+        // Check whether object o's real type is Bird, if not, return false
+         if (!(o instanceof Bird)) {
+            return false;
+        }
+ 
+        // Now we know that o is a bird, let's convert its type
+        Bird bird = (Bird) o;
+ 
+        if (this.latinName == null) {
+            return false;
+        }
+ 
+        return this.latinName.equals(bird.latinName) && 
+               this.ringingYear == bird.ringingYear;
+        */
         if (obj == null) {
             return false;
         }
