@@ -24,6 +24,11 @@ public class ContainerHistory {
         this.capHistory.clear();
     }
 
+    
+//    respuesta propuesta: utiliza Collections para obtener max y min
+//    return Collections.min(history);
+//    return Collections.max(history);
+
 //    --fase 2
     public double maxValue() {
         double maxValue = 0;
@@ -48,6 +53,9 @@ public class ContainerHistory {
         return minValue;
     }
 
+    
+//    respuesta propuesta:
+//    capHistory.size en vez de counter
     public double average() {
         double avg = 0;
         int counter = 0;
@@ -62,7 +70,7 @@ public class ContainerHistory {
     }
 
     //--fase 3
-    public double fluctuation(double numA, double numB) {
+    private double fluctuation(double numA, double numB) {
         return Math.abs(numA - numB);
     }
 
@@ -71,6 +79,9 @@ public class ContainerHistory {
         double fluctuation = 0;
         if (this.capHistory.size() > 1) {
             for (int i = 0; i < this.capHistory.size(); i++) {
+//                respuesta propuesta:
+//                for (int i = 0; i < history.size() - 1; i++) 
+//                utilizando este for, evitamos el if de abajo que verifique que i+1 no se pase del tamño del array    
                 if (i+1 < this.capHistory.size()) {
                     fluctuation = this.fluctuation(this.capHistory.get(i), this.capHistory.get(i + 1));
                 }
@@ -84,6 +95,7 @@ public class ContainerHistory {
     }
 
     public double variance() {
+//        respuesta propuesta: el if no hace falta porque si no hay items en el array la matematica da 0
         double variance = 0;
         if (this.capHistory.size() > 1) {
             for (Double value : capHistory) {

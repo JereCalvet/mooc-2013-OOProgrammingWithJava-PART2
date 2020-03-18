@@ -64,7 +64,7 @@ deps-jar:
 -compile-depend:
 
 -do-compile:
-    [javac] Compiling 2 source files to C:\Users\Jere\Documents\NetBeansProjects\mooc-2013-OOProgrammingWithJava-PART2\week10-week10_30.Container\build\classes
+    [javac] Compiling 1 source file to C:\Users\Jere\Documents\NetBeansProjects\mooc-2013-OOProgrammingWithJava-PART2\week10-week10_30.Container\build\classes
     [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
     [javac] 1 warning
 
@@ -85,4 +85,4 @@ compile:
 compile-test:
 
 BUILD SUCCESSFUL
-Total time: 2 seconds
+Total time: 1 second
