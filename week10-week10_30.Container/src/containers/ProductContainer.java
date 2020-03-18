@@ -12,11 +12,11 @@ public class ProductContainer extends Container {
         this.productName = productName;
     }
 
-    public String getProductName() {
+    public String getName() {
         return productName;
     }
 
-    public void setProductName(String newProductName) {
+    public void setName(String newProductName) {
         this.productName = newProductName;
     }
 

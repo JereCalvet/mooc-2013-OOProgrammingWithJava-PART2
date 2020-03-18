@@ -15,7 +15,10 @@ public class Container {
         volume = 0.0;
     }
 
-
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+    
     public double getVolume() {
         return volume;
     }
