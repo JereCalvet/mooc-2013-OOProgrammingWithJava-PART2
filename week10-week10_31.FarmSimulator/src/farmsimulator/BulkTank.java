@@ -10,6 +10,9 @@ public class BulkTank {
     private double volume;
 
     public BulkTank() {
+//        respuesta propuesta: utilizo el constructor de abajo, no me avive. y volumen lo puso en 0 en la declaracion 
+//        this(2000); 
+//        
         this.capacity = 2000;
         this.volume = 0;
     }

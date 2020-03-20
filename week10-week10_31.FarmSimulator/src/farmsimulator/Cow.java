@@ -30,6 +30,14 @@ public class Cow implements Milkable, Alive {
         return capGen;
     }
 
+//    resp propuesta: utilizo el shorcut "this". dormir 
+//        constructor sin nomrbe
+//         this(NAMES[new Random().nextInt(NAMES.length)]);        
+//    
+//        constructor con nombre
+//        this.name = name;
+//        this.capacity = 15 + random.nextInt(26);
+//        this.amount = 0;
     public Cow() {
         this.name = this.randomName();
         this.udderCapacity = this.randomUdderCap();
@@ -69,9 +77,12 @@ public class Cow implements Milkable, Alive {
         double min = 0.7;
         double max = 2.0;
         double milkProduced = min + (max - min) * new Random().nextDouble();
-        double tempCheckExceed = this.milkAmount + milkProduced;
+        double tempCheckExceed = this.milkAmount + Math.ceil(milkProduced);
         if (this.udderCapacity >= tempCheckExceed) {
-            this.milkAmount += milkProduced;
+            this.milkAmount += Math.ceil(milkProduced);
         }
+//        respuesta propuesta: llena lo que falta del tanke, si es que falta algo
+        //else 
+        // amount = capacity;
     }
 }
