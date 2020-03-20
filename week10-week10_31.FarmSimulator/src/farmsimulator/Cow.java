@@ -1,6 +1,5 @@
 package farmsimulator;
 
-import java.nio.charset.Charset;
 import java.util.Random;
 
 /**
@@ -67,11 +66,12 @@ public class Cow implements Milkable, Alive {
 
     @Override
     public void liveHour() {
-        if (this.milkAmount < 31) {
-            double min = 0.7;
-            double max = 2.0;
-            double milkProduced = min + (max - min) * new Random().nextDouble();
-            this.milkAmount += Math.ceil(milkProduced);
+        double min = 0.7;
+        double max = 2.0;
+        double milkProduced = min + (max - min) * new Random().nextDouble();
+        double tempCheckExceed = this.milkAmount + milkProduced;
+        if (this.udderCapacity >= tempCheckExceed) {
+            this.milkAmount += milkProduced;
         }
     }
 }
