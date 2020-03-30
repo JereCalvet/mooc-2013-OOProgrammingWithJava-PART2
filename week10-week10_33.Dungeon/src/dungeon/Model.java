@@ -40,6 +40,17 @@ public abstract class Model {
         this.type = type;
     } 
     
+    @Override
+    public String toString(){
+        String mType;
+        if (this.type == 'v' ) {
+            mType = "v";
+        } else {
+            mType = "@";
+        }
+        return mType + " " + this.getPosX() + " " + this.getPosY();
+    }
+    
     public abstract void goUp();
     public abstract void goDown();
     public abstract void goLeft();
