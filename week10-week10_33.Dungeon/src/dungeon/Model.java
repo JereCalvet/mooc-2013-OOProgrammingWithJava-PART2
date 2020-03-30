@@ -39,4 +39,9 @@ public abstract class Model {
     public void setType(char type) {
         this.type = type;
     } 
+    
+    public abstract void goUp();
+    public abstract void goDown();
+    public abstract void goLeft();
+    public abstract void goRight();
 }
