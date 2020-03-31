@@ -13,8 +13,7 @@ public class Dungeon {
     private int vampires;
     private int moves;
     private boolean vmapiresMove;
-    private List<Vampire> listVampires;
-    private Player player;
+    private List<Model> listModels;
 
     public Dungeon(int lenght, int height, int vampires, int moves, boolean vmapiresMove) {
         if (lenght == height) {
@@ -25,8 +24,7 @@ public class Dungeon {
         this.vampires = vampires;
         this.moves = moves;
         this.vmapiresMove = vmapiresMove;
-        this.player = new Player();
-        this.listVampires = new ArrayList<Vampire>();
+        this.listModels = new ArrayList<Model>();
         fillDungOfVampires();
     }
 
@@ -40,13 +38,13 @@ public class Dungeon {
 
     private void fillDungOfVampires(){
         for (int i = 0; i < this.vampires; i++) {
-            this.listVampires.add(new Vampire());
+            this.listModels.add(new Vampire());
         }
     }
     
     public boolean isPositionEmpty(int x, int y){
-        for (Vampire vampire : this.listVampires) {
-            if (vampire.getPosX() == x && vampire.getPosY() == y) {
+        for (Model model : this.listModels) {
+            if (model.getPosX() == x && model.getPosY() == y) {
                 return false;
             }
         }
@@ -54,6 +52,5 @@ public class Dungeon {
     } 
     
     public void run(){
-        
     }
 }
