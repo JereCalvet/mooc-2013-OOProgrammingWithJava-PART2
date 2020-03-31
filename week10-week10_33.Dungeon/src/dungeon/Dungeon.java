@@ -29,14 +29,27 @@ public class Dungeon {
         this.listVampires = new ArrayList<Vampire>();
         fillDungOfVampires();
     }
-    
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getLenght() {
+        return lenght;
+    }
+
     private void fillDungOfVampires(){
         for (int i = 0; i < this.vampires; i++) {
             this.listVampires.add(new Vampire());
         }
     }
     
-    public boolean checkPosition(){
+    public boolean isPositionEmpty(int x, int y){
+        for (Vampire vampire : this.listVampires) {
+            if (vampire.getPosX() == x && vampire.getPosY() == y) {
+                return false;
+            }
+        }
         return true;
     } 
     

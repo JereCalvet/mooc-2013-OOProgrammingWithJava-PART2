@@ -40,6 +40,7 @@ public abstract class Model {
         this.type = type;
     } 
     
+            
     @Override
     public String toString(){
         String mType;

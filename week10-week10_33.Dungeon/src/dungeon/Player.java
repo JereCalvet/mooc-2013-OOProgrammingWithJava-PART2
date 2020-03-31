@@ -11,23 +11,40 @@ public class Player extends Model {
         super.setType('p');
     }
 
+    
+//    verificar mov: 
+//    que este dentro del dungeon
+//    si hay un vampiro > matarlo
+//            
     @Override
     public void goUp() {
-        this.setPosY(this.getPosY() + 1);
+        int yPlus1 = this.getPosY() + 1;
+        if (yPlus1 >=  0) {
+            this.setPosY(this.getPosY() + 1);
+        }
     }
 
     @Override
     public void goDown() {
-        this.setPosY(this.getPosY() - 1);
+        int yMinus1 = this.getPosY() - 1;
+        if (yMinus1 >= 0) {
+            this.setPosY(yMinus1);
+        }
     }
 
     @Override
     public void goLeft() {
-        this.setPosX(this.getPosX() - 1);
+        int xMinus1 = this.getPosX() - 1;
+        if (xMinus1 >= 0) {
+            this.setPosX(xMinus1);
+        }
     }
 
     @Override
     public void goRight() {
-        this.setPosX(this.getPosX() + 1);
+        int xPlus1 = this.getPosX() + 1;
+        if (xPlus1 >= 0) {
+            this.setPosX(xPlus1);
+        }
     }
 }
