@@ -52,8 +52,31 @@ public abstract class Model {
         return mType + " " + this.getPosX() + " " + this.getPosY();
     }
     
-    public abstract void goUp();
-    public abstract void goDown();
-    public abstract void goLeft();
-    public abstract void goRight();
+    public void goUp(Dungeon dungeon){
+        int futureMove = this.posY - 1;
+        if (dungeon.movementManager(this, this.posX, futureMove)) {
+            this.posY = futureMove;
+        }
+    }
+    
+    public void goDown(Dungeon dungeon){
+        int futureMove = this.posY + 1;
+        if (dungeon.movementManager(this, this.posX, futureMove)) {
+            this.posY = futureMove;
+        }
+    }
+    
+    public void goLeft(Dungeon dungeon){
+        int futureMove = this.posX - 1;
+        if (dungeon.movementManager(this, futureMove, this.posY)) {
+            this.posX = futureMove;
+        }        
+    }
+    
+    public void goRight(Dungeon dungeon){
+        int futureMove = this.posX + 1;
+        if (dungeon.movementManager(this, futureMove, this.posY)) {
+            this.posX = futureMove;
+        }
+    }
 }

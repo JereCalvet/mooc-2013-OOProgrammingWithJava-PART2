@@ -2,6 +2,8 @@ package dungeon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -13,11 +15,11 @@ public class Dungeon {
     private int lenght;
     private int vampires;
     private int moves;
-    private boolean vmapiresMove;
+    private boolean vampiresMove;
     private List<Model> listModels;
 
     //--contructor
-    public Dungeon(int lenght, int height, int vampires, int moves, boolean vmapiresMove) {
+    public Dungeon(int lenght, int height, int vampires, int moves, boolean vampiresMove) {
         if (lenght == height) {
             throw new IllegalArgumentException("Error: Lenght and height have to be different. Its a rectangle");
         }
@@ -25,7 +27,7 @@ public class Dungeon {
         this.lenght = lenght;
         this.vampires = vampires;
         this.moves = moves;
-        this.vmapiresMove = vmapiresMove;
+        this.vampiresMove = vampiresMove;
         this.listModels = new ArrayList<Model>();
         fillDungeon();
     }
@@ -46,7 +48,7 @@ public class Dungeon {
             this.listModels.add(new Vampire(this));
         }
     }
-    
+
     //--position info
     private Model getModelInPosition(int x, int y) {
         for (Model model : this.listModels) {
@@ -66,7 +68,7 @@ public class Dungeon {
         return true;
     }
     //--fin position info
-    
+
     //-- print methods
     private void printModelsPosition() {
         for (Model model : this.listModels) {
@@ -98,42 +100,116 @@ public class Dungeon {
         printModelsPosition();
         System.out.println();
         printGameState();
+        System.out.println();
     }
     //--fin print
 
     //--movimiento
-     private boolean isMovementInsideDungeon(int x, int y) {
+    private boolean isMovementInsideDungeon(int x, int y) {
         return y >= 0 && this.height >= y && this.lenght >= x && x >= 0;
     }
 
-    public void movementManager(Model modelMoving, int x, int y) {
-        int caseModel = 0; 
+    public boolean movementManager(Model modelMoving, int x, int y) {
+        int caseModel = 0;
         if (modelMoving.getType() == 'v') {
             caseModel = 1;
         }
 
         if (!isMovementInsideDungeon(x, y)) {
-            return;
-        }
-        
-        if (isPositionEmpty(x, y)) {
-            return;
-        }
-        
-        switch (caseModel) { //0 player - 1 vampire
-            case 0:
-//                player moviendose hacia un vampiro:
-//                borrar el vampiro
-//                y ocupar ese lugar        
-                break;
-            case 1:
-//                vampiro moviendose hacia otro vampiro
-//                cancelar movimiento
-                break;
+            return false;
         }
 
+        switch (caseModel) { //0 player - 1 vampire
+            case 0:
+//                player moviendose, si hay vampiro lo mata
+                if (!isPositionEmpty(x, y)) {
+                    this.listModels.remove(getModelInPosition(x, y));
+                    return true;
+                }
+                break;
+            case 1:
+//                vampiro moviendose. si esta ocupado no se mueve //TESTEAR
+                 return isPositionEmpty(x, y);
+        }
+
+        return true;   //no deberia llegar nunca aca
+    }
+
+    private Model getPlayerFromList() {
+        for (Model model : this.listModels) {
+            if (model.getType() == 'p') {
+                return model;
+            }
+        }
+        return null;
+    }
+
+    private void vampireMoves(){
+        for (Model vampire : this.listModels) {
+            if (vampire.getType() == 'v') {
+                int randomMove = new Random().nextInt(4);
+                switch(randomMove){
+                    case 0:
+                        vampire.goDown(this);
+                        break;
+                    case 1:
+                        vampire.goLeft(this);
+                        break;
+                    case 2:
+                        vampire.goUp(this);
+                        break;
+                    case 3:
+                        vampire.goRight(this);
+                        break;
+                }
+            }
+        }
+    }
+    
+    private void handleCommand(char command) {
+        if (command == 'w') {
+            Model player = this.getPlayerFromList();
+            player.goUp(this);
+            if (vampiresMove) {
+                vampireMoves();
+            }
+        }
+
+        if (command == 'a') {
+            Model player = this.getPlayerFromList();
+            player.goLeft(this);
+            if (vampiresMove) {
+                vampireMoves();
+            }
+        }
+
+        if (command == 's') {
+            Model player = this.getPlayerFromList();
+            player.goDown(this);
+            if (vampiresMove) {
+                vampireMoves();
+            }
+        }
+
+        if (command == 'd') {
+            Model player = this.getPlayerFromList();
+            player.goRight(this);
+            if (vampiresMove) {
+                vampireMoves();
+            }
+        }
     }
 
     public void run() {
+        Scanner reader = new Scanner(System.in);
+        while (this.moves > 0) {
+            printStatus();
+            String commands = reader.nextLine();
+            for (int i = 0; i < commands.length(); i++) {
+                char currentOrder = commands.charAt(i);
+                handleCommand(currentOrder);
+            }
+            this.moves--;
+        }
     }
 }
