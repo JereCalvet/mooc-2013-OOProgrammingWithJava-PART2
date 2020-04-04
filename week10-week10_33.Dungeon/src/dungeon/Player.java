@@ -16,6 +16,8 @@ public class Player extends Model {
 //    que este dentro del dungeon
 //    si hay un vampiro > matarlo
 //            
+    
+    //esto esta mal xq el 0,0 esta arriba izq
     @Override
     public void goUp() {
         int yPlus1 = this.getPosY() + 1;
