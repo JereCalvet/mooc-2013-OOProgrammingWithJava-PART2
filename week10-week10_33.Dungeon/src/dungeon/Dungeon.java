@@ -20,9 +20,6 @@ public class Dungeon {
 
     //--contructor
     public Dungeon(int lenght, int height, int vampires, int moves, boolean vampiresMove) {
-        if (lenght == height) {
-            throw new IllegalArgumentException("Error: Lenght and height have to be different. Its a rectangle");
-        }
         this.height = height;
         this.lenght = lenght;
         this.vampires = vampires;
@@ -76,9 +73,9 @@ public class Dungeon {
         }
     }
 
-    private void printGameState() {
-        for (int y = 0; y <= this.height; y++) {
-            for (int x = 0; x <= this.lenght; x++) {
+    private void printDungeonState() {
+        for (int y = 0; y < this.height; y++) {
+            for (int x = 0; x < this.lenght; x++) {
                 if (isPositionEmpty(x, y)) {
                     System.out.print(".");
                 } else {
@@ -94,19 +91,43 @@ public class Dungeon {
         }
     }
 
+    private boolean areThereAnyVampireLeft() {
+        for (Model model : this.listModels) {
+            if (model.getType() == 'v') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean printGameOver() {
+
+        if (this.moves == 0) {
+            System.out.println("YOU LOSE");
+            return true;
+        }
+
+        if (!this.areThereAnyVampireLeft()) {
+            System.out.println("YOU WIN");
+            return true;
+        }
+
+        return false;
+    }
+
     private void printStatus() {
         System.out.println(this.moves);
         System.out.println();
         printModelsPosition();
         System.out.println();
-        printGameState();
+        printDungeonState();
         System.out.println();
     }
     //--fin print
 
     //--movimiento
     private boolean isMovementInsideDungeon(int x, int y) {
-        return y >= 0 && this.height >= y && this.lenght >= x && x >= 0;
+        return y >= 0 && this.height - 1 >= y && this.lenght - 1 >= x && x >= 0;
     }
 
     public boolean movementManager(Model modelMoving, int x, int y) {
@@ -129,10 +150,9 @@ public class Dungeon {
                 break;
             case 1:
 //                vampiro moviendose. si esta ocupado no se mueve //TESTEAR
-                 return isPositionEmpty(x, y);
+                return isPositionEmpty(x, y);
         }
-
-        return true;   //no deberia llegar nunca aca
+        return true;  
     }
 
     private Model getPlayerFromList() {
@@ -144,11 +164,11 @@ public class Dungeon {
         return null;
     }
 
-    private void vampireMoves(){
+    private void vampireMoves() {
         for (Model vampire : this.listModels) {
             if (vampire.getType() == 'v') {
                 int randomMove = new Random().nextInt(4);
-                switch(randomMove){
+                switch (randomMove) {
                     case 0:
                         vampire.goDown(this);
                         break;
@@ -165,7 +185,7 @@ public class Dungeon {
             }
         }
     }
-    
+
     private void handleCommand(char command) {
         if (command == 'w') {
             Model player = this.getPlayerFromList();
@@ -203,13 +223,20 @@ public class Dungeon {
     public void run() {
         Scanner reader = new Scanner(System.in);
         while (this.moves > 0) {
+
             printStatus();
+
             String commands = reader.nextLine();
             for (int i = 0; i < commands.length(); i++) {
                 char currentOrder = commands.charAt(i);
                 handleCommand(currentOrder);
             }
+            
             this.moves--;
+            if (printGameOver()) {
+                System.out.println();
+                break;
+            }
         }
     }
 }
