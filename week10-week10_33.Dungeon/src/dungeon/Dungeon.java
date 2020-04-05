@@ -149,7 +149,7 @@ public class Dungeon {
                 }
                 break;
             case 1:
-//                vampiro moviendose. si esta ocupado no se mueve //TESTEAR
+//                vampiro moviendose. si esta ocupado no se mueve
                 return isPositionEmpty(x, y);
         }
         return true;  
