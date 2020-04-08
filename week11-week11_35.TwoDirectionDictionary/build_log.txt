@@ -73,16 +73,12 @@ deps-jar:
 compile:
 
 -pre-pre-compile-test:
-    [mkdir] Created dir: C:\Users\Jere\Documents\NetBeansProjects\mooc-2013-OOProgrammingWithJava-PART2\week11-week11_35.TwoDirectionDictionary\build\test\classes
 
 -pre-compile-test:
 
 -compile-test-depend:
 
 -do-compile-test:
-    [javac] Compiling 1 source file to C:\Users\Jere\Documents\NetBeansProjects\mooc-2013-OOProgrammingWithJava-PART2\week11-week11_35.TwoDirectionDictionary\build\test\classes
-    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
-    [javac] 1 warning
      [copy] Copying 2 files to C:\Users\Jere\Documents\NetBeansProjects\mooc-2013-OOProgrammingWithJava-PART2\week11-week11_35.TwoDirectionDictionary\build\test\classes
 
 -post-compile-test:
@@ -90,4 +86,4 @@ compile:
 compile-test:
 
 BUILD SUCCESSFUL
-Total time: 7 seconds
+Total time: 2 seconds
