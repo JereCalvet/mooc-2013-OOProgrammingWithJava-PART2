@@ -1,4 +1,5 @@
 
+import Calculator.ui.Main;
 import fi.helsinki.cs.tmc.edutestutils.Points;
 import java.awt.Component;
 import java.awt.Dimension;
