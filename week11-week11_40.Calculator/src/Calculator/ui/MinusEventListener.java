@@ -12,12 +12,12 @@ import javax.swing.JTextField;
 public class MinusEventListener implements ActionListener {
 
     private Calculator calculator;
-    private JTextField intput;
+    private JTextField input;
     private JTextField output;
 
-    public MinusEventListener(Calculator calculator, JTextField intput, JTextField output) {
+    public MinusEventListener(Calculator calculator, JTextField input, JTextField output) {
         this.calculator = calculator;
-        this.intput = intput;
+        this.input = input;
         this.output = output;
     }
 
@@ -27,6 +27,7 @@ public class MinusEventListener implements ActionListener {
             inputNumber = Integer.parseInt(number);
         } catch (NumberFormatException e) {
             //throw new NumberFormatException("Error: " + e.getMessage());
+            input.setText("");
             System.out.println("Error: No es un numero valido." + e.getMessage());
             return 0;
         }
@@ -35,7 +36,8 @@ public class MinusEventListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        calculator.minus(validateInputNumber(this.intput.getText()));
+        calculator.minus(validateInputNumber(this.input.getText()));
         this.output.setText(String.valueOf(calculator.giveValue()));
+        this.input.setText("");
     }
 }

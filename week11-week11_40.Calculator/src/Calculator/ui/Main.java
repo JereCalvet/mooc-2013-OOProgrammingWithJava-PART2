@@ -1,9 +1,6 @@
 package Calculator.ui;
 
 
-
-import Calculator.ui.GraphicCalculator;
-import Calculator.logic.Calculator;
 import Calculator.logic.PersonalCalculator;
 import javax.swing.SwingUtilities;
 

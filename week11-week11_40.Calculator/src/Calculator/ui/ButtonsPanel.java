@@ -13,35 +13,48 @@ import javax.swing.JTextField;
 public class ButtonsPanel extends JPanel {
 
     private Calculator calculator;
-    private JTextField intput;
+    private JTextField input;
     private JTextField output;
     private JButton buttonPlus;
     private JButton buttonMinus;
     private JButton buttonReset;
     
-    public ButtonsPanel(Calculator calculator, JTextField intput, JTextField output) {
+    public ButtonsPanel(Calculator calculator, JTextField input, JTextField output) {
         super(new GridLayout(1, 3));
         this.calculator = calculator;
-        this.intput = intput;
+        this.input = input;
         this.output = output;
         createButtons();
+        createListeners();
     }
  
     private void createButtons() {
-        this.buttonPlus = new JButton("+");
+        buttonPlus = new JButton("+");
         add(buttonPlus);
      
-        this.buttonMinus = new JButton("-");
+        buttonMinus = new JButton("-");
         add(buttonMinus);
      
-        this.buttonReset = new JButton("Z");
+        buttonReset = new JButton("Z");
+        buttonReset.setEnabled(false);
         add(buttonReset);
-        
-        addListeners();
     }
     
-    private void addListeners(){
-        PlusEventListener plusButtonClickListener = new PlusEventListener(this.calculator, this.intput, this.output);
+    private void createListeners(){
+        CheckButtonStateEventListener resetButtonStateCheckerListener = new CheckButtonStateEventListener(calculator, buttonReset);
+        buttonReset.addActionListener(resetButtonStateCheckerListener);
+        buttonPlus.addActionListener(resetButtonStateCheckerListener);
+        buttonMinus.addActionListener(resetButtonStateCheckerListener);
+        
+        PlusEventListener plusButtonClickListener = new PlusEventListener(calculator, input, output);
         buttonPlus.addActionListener(plusButtonClickListener);
+        
+        MinusEventListener minusButtonClickListener = new MinusEventListener(calculator, input, output);
+        buttonMinus.addActionListener(minusButtonClickListener);
+    
+        ResetEventListener resetButtonClickListener = new ResetEventListener(calculator, input, output);
+        buttonReset.addActionListener(resetButtonClickListener);
     }
+    
+    
 }

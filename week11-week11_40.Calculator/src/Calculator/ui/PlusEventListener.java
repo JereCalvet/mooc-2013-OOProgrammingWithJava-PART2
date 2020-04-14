@@ -12,20 +12,21 @@ import javax.swing.JTextField;
 public class PlusEventListener implements ActionListener {
 
     private Calculator calculator;
-    private JTextField intput;
+    private JTextField input;
     private JTextField output;
 
-    public PlusEventListener(Calculator calculator, JTextField intput, JTextField output) {
+    public PlusEventListener(Calculator calculator, JTextField input, JTextField output) {
         this.calculator = calculator;
-        this.intput = intput;
+        this.input = input;
         this.output = output;
     }
-
+    
     private int validateInputNumber(String number) {
         int inputNumber;
         try {
             inputNumber = Integer.parseInt(number);
         } catch (NumberFormatException e) {
+            input.setText("");
             System.out.println("Error: " + e.getMessage());
             return 0;
         }
@@ -34,7 +35,8 @@ public class PlusEventListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        calculator.plus(validateInputNumber(this.intput.getText()));
+        calculator.plus(validateInputNumber(this.input.getText()));
         this.output.setText(String.valueOf(calculator.giveValue()));
+        this.input.setText("");
     }
 }
