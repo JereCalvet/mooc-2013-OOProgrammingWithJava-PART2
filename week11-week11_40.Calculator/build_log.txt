@@ -70,7 +70,6 @@ deps-jar:
 compile:
 
 -pre-pre-compile-test:
-    [mkdir] Created dir: C:\Users\Jere\Documents\NetBeansProjects\mooc-2013-OOProgrammingWithJava-PART2\week11-week11_40.Calculator\build\test\classes
 
 -pre-compile-test:
 

@@ -1,7 +1,7 @@
-package Calculator.ui;
 
 
-import Calculator.logic.PersonalCalculator;
+import Calculator.logic.*;
+import Calculator.ui.*;
 import javax.swing.SwingUtilities;
 
 public class Main {
