@@ -7,7 +7,12 @@ import javax.swing.*;
 public class UserInterface implements Runnable {
 
     private JFrame frame;
+    private Figure figure;
 
+    public UserInterface(Figure figure) {
+        this.figure = figure;
+    }
+     
     @Override
     public void run() {
         frame = new JFrame();
