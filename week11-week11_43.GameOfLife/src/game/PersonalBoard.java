@@ -86,9 +86,14 @@ public class PersonalBoard extends GameOfLifeBoard {
 
     @Override
     public void manageCell(int i, int i1, int i2) {
-//        if (i2) {
-//            
-//        }
+        if (getBoard()[i][i1]) {
+            if (i2 < 2 || i2 > 3) {
+                turnToDead(i, i1);
+            }
+        } else if (i2 == 3) {
+            turnToLiving(i, i1);
+        }
     }
-
 }
+
+
