@@ -43,6 +43,6 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film: " + name;
+        return name;
     }
 }
