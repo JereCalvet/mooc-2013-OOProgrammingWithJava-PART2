@@ -19,12 +19,12 @@ public class FilmComparator implements Comparator<Film> {
     }
 
     private double calculateFilmAvgRating(Film film) {
-        double filmAvgRating = 0;
+        Double filmAvgRating = 0.0;
         List<Rating> ratingList = ratings.get(film);
         for (Rating rating : ratingList) {
             filmAvgRating += rating.getValue();
-            filmAvgRating = filmAvgRating / ratingList.size();
         }
+        filmAvgRating = filmAvgRating / ratingList.size();
         return filmAvgRating;
     }
 
