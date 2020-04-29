@@ -77,4 +77,13 @@ public class RatingRegister {
         }
         return reviewers;
     }
+
+    public List<Film> getListOfFilms() {
+        List<Film> listOfFilms = new ArrayList<Film>();
+        for (Film film : ratingStorage.keySet()) {
+            listOfFilms.add(film);
+        }
+        return listOfFilms;
+    }
+
 }

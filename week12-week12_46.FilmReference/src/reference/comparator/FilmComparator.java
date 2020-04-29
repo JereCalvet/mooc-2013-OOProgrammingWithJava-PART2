@@ -30,6 +30,6 @@ public class FilmComparator implements Comparator<Film> {
 
     @Override
     public int compare(Film film, Film otherFilm) {
-        return (int) (calculateFilmAvgRating(film) - calculateFilmAvgRating(otherFilm));
+        return (int) (calculateFilmAvgRating(otherFilm) - calculateFilmAvgRating(film));
     }
 }

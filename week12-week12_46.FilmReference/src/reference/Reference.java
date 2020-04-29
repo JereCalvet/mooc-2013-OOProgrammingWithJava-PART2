@@ -1,6 +1,7 @@
 package reference;
 
 import java.util.Collections;
+import java.util.List;
 import reference.comparator.FilmComparator;
 import reference.domain.*;
 
@@ -17,18 +18,9 @@ public class Reference {
     }
 
     public Film recommendFilm(Person person) {
-        //Collections.sort(, new FilmComparator(rating.filmRatings()));
-
-        /*        Implement the class Reference in the package reference. 
-        The class Reference receives a RatingRegister object as constructor parameter. 
-        Reference uses the ratings in the rating register to elaborate a recommendation.
-
-        Implement the method public Film recommendFilm(Person person), which implements films to people. 
-        Hint: you need three things to find out the most suitable film. 
-        These are at least the class FilmComparator which you created earlier on; 
-        the method public Map<Film, List<Rating>> filmRatings() of the class RatingRegister; 
-        and a list of the existing films.
-         */
-        return null;
+        //best choice is recommending them the film which has received the hightest average among the ratings
+        List<Film> films = rating.getListOfFilms(); 
+        Collections.sort(films, new FilmComparator(rating.filmRatings())); 
+        return films.get(0);
     }
 }
