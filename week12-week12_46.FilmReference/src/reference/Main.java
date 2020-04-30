@@ -30,12 +30,7 @@ public class Main {
 
         ratings.addRating(mikke, eraserhead, Rating.BAD);
 
-        Map<Film, List<Rating>> filmRatings = ratings.filmRatings();
-
-        List<Film> films = Arrays.asList(goneWithTheWind, theBridgesOfMadisonCounty, eraserhead);
-        System.out.println("The films before sorting: " + films);
-
-        Collections.sort(films, new FilmComparator(filmRatings));
-        System.out.println("The films after sorting: " + films);
+        Reference recommend = new Reference(ratings);
+        recommend.recommendFilm(new Person("jere"));
     }
 }
