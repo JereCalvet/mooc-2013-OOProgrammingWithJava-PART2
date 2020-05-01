@@ -89,8 +89,4 @@ public class RatingRegister {
     public boolean hasPersonRatedAnyFilm(Person person) {
        return personalRating.containsKey(person);
     }
-    
-    public boolean HasPersonSeenFilm(Person person, Film film) {
-        return false;
-    }
 }

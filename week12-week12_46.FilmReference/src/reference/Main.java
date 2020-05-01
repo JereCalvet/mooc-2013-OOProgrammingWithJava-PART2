@@ -21,16 +21,17 @@ public class Main {
         Person mikke = new Person("Mikke");
 
         ratings.addRating(matti, goneWithTheWind, Rating.BAD);
-        ratings.addRating(matti, theBridgesOfMadisonCounty, Rating.GOOD);
-        ratings.addRating(matti, eraserhead, Rating.FINE);
+        ratings.addRating(matti, theBridgesOfMadisonCounty, Rating.FINE);
+        ratings.addRating(matti, eraserhead, Rating.BAD);
 
         ratings.addRating(pekka, goneWithTheWind, Rating.FINE);
         ratings.addRating(pekka, theBridgesOfMadisonCounty, Rating.BAD);
-        ratings.addRating(pekka, eraserhead, Rating.MEDIOCRE);
+        ratings.addRating(pekka, eraserhead, Rating.FINE);
 
         ratings.addRating(mikke, eraserhead, Rating.BAD);
 
         Reference recommend = new Reference(ratings);
-        recommend.recommendFilm(new Person("jere"));
+        
+        System.out.println(recommend.calculateSimilarity(matti, pekka));
     }
 }
