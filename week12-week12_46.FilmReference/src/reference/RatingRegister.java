@@ -21,6 +21,14 @@ public class RatingRegister {
     }
 
     public void addRating(Film film, Rating rating) {
+        /* respuesta propuesta: es igual pero escrito de otra forma
+              if (!this.filmRatings.containsKey(film)) {             //por aca solo si esta agregando
+            this.filmRatings.put(film, new ArrayList<Rating>());
+            }
+ 
+            List<Rating> movieRatings = this.filmRatings.get(film);  //por aca pasa siempre
+            movieRatings.add(rating);    
+        */
         if (ratingStorage.containsKey(film)) {
             ratingStorage.get(film).add(rating);
         } else {
@@ -51,7 +59,7 @@ public class RatingRegister {
         addRating(film, rating);
     }
 
-    public Rating getRating(Person person, Film film) {
+    public Rating getRating(Person person, Film film) { 
         Map<Film, Rating> filmRatingStorage;
         if (personalRating.containsKey(person)) {
             filmRatingStorage = personalRating.get(person);
@@ -63,6 +71,15 @@ public class RatingRegister {
     }
 
     public Map<Film, Rating> getPersonalRatings(Person person) {
+        /*
+        respuesta propuesta: esta es la forma correcta de escribir este metodo
+         if (!this.personalRatings.containsKey(person)) {
+            return new HashMap();
+        }
+ 
+        return this.personalRatings.get(person);
+        */
+        
         if (personalRating.containsKey(person)) {
             return personalRating.get(person);
         }
