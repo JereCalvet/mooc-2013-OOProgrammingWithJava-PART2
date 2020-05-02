@@ -12,6 +12,4 @@ public class ContainsWord implements Criterion {
     public boolean complies(String line) {
         return line.contains(word);
     }
-
-
 }

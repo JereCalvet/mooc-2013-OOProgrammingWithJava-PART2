@@ -7,6 +7,13 @@ public class Main {
     }
 
     public static String build(int[] t) {
-        return "{\n}\n";
+        StringBuilder str = new StringBuilder();
+        int repetion = 0;
+        str.append("{");
+        
+//        \n primer valor, segundo tecero cuarto
+        
+        str.append("}");
+        return str.toString();
     }
 }
