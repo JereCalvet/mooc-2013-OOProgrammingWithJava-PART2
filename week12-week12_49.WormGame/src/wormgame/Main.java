@@ -5,7 +5,6 @@ import wormgame.domain.*;
 import wormgame.gui.UserInterface;
 import wormgame.game.WormGame;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -17,5 +16,16 @@ public class Main {
         System.out.println(worm.getPieces());
         worm.move();
         System.out.println(worm.getPieces());
+
+        worm.grow();
+        System.out.println(worm.getPieces());
+        worm.move();
+        System.out.println(worm.getPieces());
+
+        worm.setDirection(Direction.LEFT);
+        System.out.println(worm.runsIntoItself());
+        worm.move();
+        System.out.println(worm.runsIntoItself());
+
     }
 }
