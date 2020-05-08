@@ -19,7 +19,7 @@ public class Worm extends Piece {
         super(originalX, originalY);
         this.originalDirection = originalDirection;
         this.body = new ArrayList<Piece>();
-        this.body.add(this);
+        this.body.add(new Piece(originalX, originalY));
     }
 
     public Direction getDirection() {
@@ -38,7 +38,7 @@ public class Worm extends Piece {
         return body;
     }
 
-      private int[] calculateXAndYValuesForNewPiece(Piece piece, Direction dir) {
+    private int[] calculateXAndYValuesForNewPiece(Piece piece, Direction dir) {
         int[] coordenates = new int[2];
         switch (dir) {
             case UP:
@@ -63,35 +63,58 @@ public class Worm extends Piece {
         }
         return coordenates;
     }
-    
-    private boolean isMatureSize(){
+
+    private boolean isMatureSize() {
         return body.size() >= 4;
-    }  
-      
-    public void move() {
-        int[] coordenates;
+    }
+
+    private Piece getHeadOfTheWorm() {  
         int lastPiece = body.size() - 1;
-        coordenates = calculateXAndYValuesForNewPiece(body.get(lastPiece), originalDirection);
+        return body.get(lastPiece);
+    }
+
+    public void move() {
+        /*
+        Para mover el gusano agrego un pieza adelante en la direccion que deberia ir (esta ultima pieza se convierte en la 
+        cabeza del gusano). Posteriormente, si no puede crecer (xq no comio y xq ya esta maduro) se borra la cola del gusano
+         */
+        int[] coordenates;
+        coordenates = calculateXAndYValuesForNewPiece(getHeadOfTheWorm(), originalDirection);
         body.add(new Piece(coordenates[0], coordenates[1]));
-        
-        if (isMatureSize()) {
+
+        if (!isMatureSize()) {
+            grow();
+        }
+
+        if (!canGrow) {
             body.remove(body.get(0));
         }
+
+        canGrow = false;
     }
 
     public void grow() {
-        int[] coordenates;
-        int lastPiece = body.size() - 1;
-        coordenates = calculateXAndYValuesForNewPiece(body.get(lastPiece), originalDirection);
-        body.add(new Piece(coordenates[0], coordenates[1]));
+        canGrow = true;
     }
 
-    public boolean runsIntoItself() {
-        for (Piece piece : body) {
-            if (this.runsInto(piece)) {
+    @Override
+    public boolean runsInto(Piece piece) {
+        for (Piece wormPiece : body) {
+            if (wormPiece.runsInto(piece)) {
                 return true;
             }
         }
+        return false;
+    }
+    
+    public boolean runsIntoItself() {
+        Piece head = getHeadOfTheWorm();
+        body.remove(head);
+        if (runsInto(head)) {
+            body.add(head);
+            return true;
+        }
+        body.add(head);
         return false;
     }
 }
