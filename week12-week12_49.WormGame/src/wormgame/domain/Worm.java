@@ -1,5 +1,7 @@
 package wormgame.domain;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 import wormgame.*;
@@ -37,7 +39,7 @@ public class Worm extends Piece {
         return body;
     }
 
-    private int[] calculateXAndYValuesForNewPiece(Piece piece, Direction dir) {
+    public int[] calculateXAndYValuesForNewPiece(Piece piece, Direction dir) {
         int[] coordenates = new int[2];
         switch (dir) {
             case UP:
@@ -67,7 +69,7 @@ public class Worm extends Piece {
         return body.size() >= 4;
     }
 
-    private Piece getHeadOfTheWorm() {  
+    public Piece getHeadOfTheWorm() {  
         int lastPiece = body.size() - 1;
         return body.get(lastPiece);
     }
