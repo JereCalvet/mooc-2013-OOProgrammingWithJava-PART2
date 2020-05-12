@@ -1,7 +1,5 @@
 package wormgame.domain;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 import wormgame.*;
@@ -39,7 +37,7 @@ public class Worm extends Piece {
         return body;
     }
 
-    public int[] calculateXAndYValuesForNewPiece(Piece piece, Direction dir) {
+    private int[] calculateXAndYValuesForNewPiece(Piece piece, Direction dir) {
         int[] coordenates = new int[2];
         switch (dir) {
             case UP:
@@ -101,6 +99,13 @@ public class Worm extends Piece {
     @Override
     public boolean runsInto(Piece piece) {
         for (Piece wormPiece : body) {
+            //respuesta propuesta: en la siguiente linea lo hice mejor porque yo utilice el metodo runInto de la clase piece
+            //mientras que lo propuesto declaro ese metodo inecesario que hace lo mismo.
+            /*
+             private boolean same(Piece p1, Piece p2) {
+                return p1.getX() == p2.getX() && p1.getY() == p2.getY();
+             }
+            */
             if (wormPiece.runsInto(piece)) {
                 return true;
             }
@@ -109,13 +114,29 @@ public class Worm extends Piece {
     }
     
     public boolean runsIntoItself() {
+        /*
+        logica:
+        si alguna pieza mete en la cabeza del gusano, quiere decir que la cabeza atraveso el cuerpo del gusano
+        */
+        
         Piece head = getHeadOfTheWorm();
         body.remove(head);
-        if (runsInto(head)) {
+        if (runsInto(head)) {   //este metodo es el del gusano (arriba)
             body.add(head);
             return true;
         }
         body.add(head);
         return false;
+        /*respuesta propuesta: es buena, no se me ocurrio. funciona de ambas formas
+        for (int i = 0; i < pieces.size(); i++) {
+            for (int j = i + 1; j < pieces.size(); j++) {
+                if (same(pieces.get(i), pieces.get(j))) {
+                    return true;
+                }
+            }
+        }
+ 
+        return false;
+        */
     }
 }

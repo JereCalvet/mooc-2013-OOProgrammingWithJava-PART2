@@ -67,7 +67,7 @@ public class WormGame extends Timer implements ActionListener {
     //metodos
     @Override
     public void actionPerformed(ActionEvent ae) {
-        //worm.move();
+        worm.move();
 
         if (worm.runsInto(apple)) {
             worm.grow();
@@ -76,7 +76,9 @@ public class WormGame extends Timer implements ActionListener {
 
         continues();
 
-        updatable.update();
+        if (continues) {
+            updatable.update();
+        }
 
         setDelay(1000 / worm.getLength());
     }
@@ -88,8 +90,20 @@ public class WormGame extends Timer implements ActionListener {
     }
 
     private int[] checkAppleNotInWormCoords(int width, int height) {
-        int genWidth = genRandomCoorBetweenOneAnd(width);
-        int genHeigh = genRandomCoorBetweenOneAnd(height);
+        /*
+        aca intentado usar recursion, la complique demas. yo utilice 3 metodos meh
+        respuesta propuesta:
+         while (true) {
+            Random random = new Random();
+            apple = new Apple(random.nextInt(width), random.nextInt(height));
+            if (!worm.runsInto(apple)) { (si alguna parte del cupo NO esta en la pos de manzana
+                break;
+            }
+        }
+        */
+        
+        int genWidth = genRandomCoor(width);
+        int genHeigh = genRandomCoor(height);
         if (genWidth == worm.getX() && genHeigh == worm.getY()) {
             return checkAppleNotInWormCoords(width, height);
         } else {
@@ -98,30 +112,21 @@ public class WormGame extends Timer implements ActionListener {
         }
     }
 
-    private int genRandomCoorBetweenOneAnd(int maxValue) {
+    private int genRandomCoor(int maxValue) {
         Random randomNumGen = new Random();
         return randomNumGen.nextInt(maxValue);
     }
 
     private boolean isMovingOutsideTheBoard() {
-        int[] possibleOutsideCoords;
-        possibleOutsideCoords = worm.calculateXAndYValuesForNewPiece(worm.getHeadOfTheWorm(), worm.getDirection());
-
-        Piece pieceOutside = new Piece(possibleOutsideCoords[0], possibleOutsideCoords[0]);
-        if (pieceOutside.getX() > width || pieceOutside.getY() > height || pieceOutside.getX() < 0 || pieceOutside.getY() < 0) {
-            if (worm.runsInto(pieceOutside)) {
-                return true;
-            }
-        }
-        return false;
+        return worm.getHeadOfTheWorm().getX() >= width || worm.getHeadOfTheWorm().getY() >= height || worm.getHeadOfTheWorm().getX() <= 0 || worm.getHeadOfTheWorm().getY() <= 0;
     }
 
     public boolean continues() {
-        if (isMovingOutsideTheBoard()) {
+        if (worm.runsIntoItself()) {
             return continues = false;
         }
 
-        if (worm.runsIntoItself()) {
+        if (isMovingOutsideTheBoard()) {
             return continues = false;
         }
 
@@ -130,11 +135,11 @@ public class WormGame extends Timer implements ActionListener {
 
     public void draw(Graphics graphics, int pieceLength) {
         graphics.setColor(Color.RED);
-        graphics.fillOval(apple.getX(), apple.getY(), pieceLength, pieceLength);
+        graphics.fillOval(apple.getX() * pieceLength, apple.getY() * pieceLength, pieceLength, pieceLength);
 
         graphics.setColor(Color.BLACK);
         for (Piece piece : worm.getPieces()) {
-            graphics.fill3DRect(piece.getX(), piece.getY(), pieceLength, pieceLength, true);
+            graphics.fill3DRect(piece.getX() * pieceLength, piece.getY() * pieceLength, pieceLength, pieceLength, true);
         }
     }
 }

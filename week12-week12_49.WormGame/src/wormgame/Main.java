@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         WormGame game = new WormGame(20, 20);
 
-        UserInterface ui = new UserInterface(game, 20);
+        UserInterface ui = new UserInterface(game, 10);
         SwingUtilities.invokeLater(ui);
 
         while (ui.getUpdatable() == null) {

@@ -31,6 +31,7 @@ public class Piece {
     }
     
     public boolean runsInto(Piece piece) {
+        //respuesta propuesta: usa la variable directamente   return x == piece.x && y == piece.y; 
         return piece.getX() == this.getX() && piece.getY() == this.getY();
     }
     
