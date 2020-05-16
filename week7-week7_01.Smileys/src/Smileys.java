@@ -1,4 +1,6 @@
-
+/*
+Tema: Visibilidad: private
+*/
 public class Smileys {
 
     private static boolean lengthIsOdd(String characterString){
