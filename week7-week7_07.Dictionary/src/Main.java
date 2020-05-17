@@ -1,4 +1,6 @@
-
+/*
+Tema: Variables primitivas o originales en hashMap
+*/
 import java.util.Scanner;
 
 public class Main {

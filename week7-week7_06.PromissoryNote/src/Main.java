@@ -1,3 +1,6 @@
+/*
+Tema: Variables primitivas o originales en hashMap
+*/
 public class Main {
     public static void main(String[] args) {
         PromissoryNote listaDePagare = new PromissoryNote();
