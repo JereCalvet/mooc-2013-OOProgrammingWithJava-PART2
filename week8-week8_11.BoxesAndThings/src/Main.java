@@ -1,4 +1,7 @@
-
+/*
+Tema: Interface: *como parametro de un metodo
+                 *como variable
+*/
 /**
  *
  * @author Jere
