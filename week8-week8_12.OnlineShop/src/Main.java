@@ -1,4 +1,13 @@
+/*
+Tema: Estructuras de datos: Interfaces pre-fabricadas.
+    Map
+    List
+    Set
+    HashSet
+    Collection
 
+Material: https://materiaalit.github.io/2013-oo-programming/part2/week-8/
+*/
 import java.util.Scanner;
 
 public class Main {
