@@ -1,3 +1,6 @@
+/*
+Temas: Leer archivos. Character Set
+*/
 package file;
 
 import java.io.File;

@@ -1,3 +1,6 @@
+/*
+Temas: Leer archivos. Character Set
+*/
 package wordinspection;
 
 import java.io.File;
