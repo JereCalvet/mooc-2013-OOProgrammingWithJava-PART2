@@ -1,3 +1,6 @@
+/*
+Tema: Packages
+*/
 import mooc.logic.ApplicationLogic;
 import mooc.ui.UserInterface;
 import mooc.ui.TextUserInterface;
