@@ -1,4 +1,7 @@
-
+/*
+Tema: Un objeto en varias listas, mapa o set al mismo tiempo
+https://materiaalit.github.io/2013-oo-programming/part2/week-9/
+*/
 import UserInterface.TextUserInterface;
 import java.util.Scanner;
 
