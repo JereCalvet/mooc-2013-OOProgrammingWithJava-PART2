@@ -1,3 +1,6 @@
+/*
+Temas: HashMaps conteniendo arraylist, listas, sets
+*/
 package tools;
 
 public class Main {
