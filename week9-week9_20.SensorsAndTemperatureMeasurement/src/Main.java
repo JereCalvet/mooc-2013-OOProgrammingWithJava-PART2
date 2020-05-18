@@ -1,4 +1,6 @@
-
+/*
+Temas: Exceptions. Throwing Exceptions
+*/
 import application.*;
 
 /**
