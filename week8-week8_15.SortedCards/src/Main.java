@@ -1,4 +1,6 @@
-
+/*
+Tema: Generics e interface Comparable (usa generics)
+*/
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
