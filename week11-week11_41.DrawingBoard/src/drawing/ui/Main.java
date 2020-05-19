@@ -1,3 +1,6 @@
+/*
+Tema: GUI Swing: Dibujando (JPanel)
+*/
 package drawing.ui;
 
 import javax.swing.SwingUtilities;
