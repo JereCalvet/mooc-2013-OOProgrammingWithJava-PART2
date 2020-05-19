@@ -1,3 +1,7 @@
+/*
+  Temas: Separando GUI: User interface y UI Logic (application logic)
+*/
+
 package clicker.ui;
 
 import clicker.applicationlogic.PersonalCalculator;
