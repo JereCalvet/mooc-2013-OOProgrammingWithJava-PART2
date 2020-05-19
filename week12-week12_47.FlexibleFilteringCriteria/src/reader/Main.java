@@ -1,3 +1,6 @@
+/*
+Tema: Numero variable de parametros en un metodo. (Ej: Infinitos int como parametro) 
+*/
 package reader;
 
 import reader.criteria.*;
