@@ -1,3 +1,6 @@
+/*
+Tema: Ejercicio
+*/
 package game;
 
 import gameoflife.Simulator;
