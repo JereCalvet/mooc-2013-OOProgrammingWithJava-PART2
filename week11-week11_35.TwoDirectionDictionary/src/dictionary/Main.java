@@ -1,3 +1,6 @@
+/*
+Temas: Leer y escribir archivos
+*/
 package dictionary;
 
 public class Main {
