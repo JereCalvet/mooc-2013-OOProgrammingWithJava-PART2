@@ -1,3 +1,6 @@
+/*
+Tema: Ejecicio final: Juego del gusano
+*/
 package wormgame;
 
 import javax.swing.SwingUtilities;
