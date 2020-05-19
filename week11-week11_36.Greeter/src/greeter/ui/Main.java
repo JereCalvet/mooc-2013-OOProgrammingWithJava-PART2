@@ -1,3 +1,6 @@
+/*
+Temas: Swing GUI: Intro Jframe y componentes 
+*/
 package greeter.ui;
 
 import javax.swing.SwingUtilities;
