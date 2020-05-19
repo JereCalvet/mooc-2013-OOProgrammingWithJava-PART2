@@ -1,3 +1,6 @@
+/*
+Tema: GUI Swing: JPanel repaint y ejercicio
+*/
 package movingfigure;
 
 import javax.swing.SwingUtilities;
