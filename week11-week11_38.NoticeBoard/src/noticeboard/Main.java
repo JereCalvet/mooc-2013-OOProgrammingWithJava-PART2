@@ -1,3 +1,6 @@
+/*
+Tema: Trabajando con action events listeners y usando objetos dentro de los mismos
+*/
 package noticeboard;
 
 import javax.swing.SwingUtilities;
