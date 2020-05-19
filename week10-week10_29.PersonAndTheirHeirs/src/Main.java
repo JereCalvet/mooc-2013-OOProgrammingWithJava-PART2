@@ -1,4 +1,6 @@
-
+/*
+Temas: Herencia. Private, public, protected. SuperClase. Llamando metodos de la superclase
+*/
 import java.util.ArrayList;
 import java.util.List;
 import people.*;
