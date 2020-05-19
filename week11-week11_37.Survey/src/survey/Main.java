@@ -1,3 +1,6 @@
+/*
+Tema: configurando componentes: Layout
+*/
 package survey;
 
 import javax.swing.SwingUtilities;
